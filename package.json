@@ -1,0 +1,15 @@
+{
+  "name": "client-tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "orderengine-client": "^0.3.52",
+    "pug": "^3.0.0"
+  }
+}

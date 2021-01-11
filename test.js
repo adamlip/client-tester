@@ -1,5 +1,6 @@
 var pug = require('pug')
-let puggy = pug.compileFile("./Test/order_supervisor.pug")
+var fs = require('fs')
+let puggy = pug.compileFile("./order_supervisor.pug")
 
 let order = {
     "uuid": "11EB51C97679EB3097F415590907F81B",
@@ -198,4 +199,9 @@ let order = {
     "discountAmount": 0
 }
 
-console.log(puggy({order}))
+let data = puggy({order})
+console.log(data)
+
+fs.writeFile('test.html', data, function (err) {
+    if (err) return console.log(err);
+  });

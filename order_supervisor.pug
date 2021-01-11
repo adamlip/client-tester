@@ -1,0 +1,48 @@
+p Hát szia!
+p Új rendelés érkezett!
+table
+    tr
+        td
+            | Szorzó
+        td 
+            | Terméknév
+        td 
+            | Kiszerelés
+        td 
+            | Bruttó Ár
+        td 
+            | Megjegyzés
+    each val, key in order.items
+        tr
+            td
+                = val.count
+                | x
+            td
+                = val.name.hu
+            td
+                = val.sizeName.hu
+            td
+                = val.discountPrice
+                | Ft.
+            td
+                = val.notes
+p   Rendelésszám:
+    = order.orderNumber
+p   Megjegyzés:
+    = order.notes
+p   Név: 
+    = order.deliveryInfo.name
+p   Tel: 
+    = order.deliveryInfo.telNumber
+p   Cím: 
+    = order.deliveryInfo.zip
+    |  
+    = order.deliveryInfo.city
+    | ,
+    = order.deliveryInfo.street
+    |  
+    = order.deliveryInfo.streetNumber
+    |  
+    = order.deliveryInfo.floor
+
+p Ha bármi nem jó - simán lehet - akkor ide írj válaszban! p Egyébként meg akkor hívunk mi és visszük és várjuk a találkozást!

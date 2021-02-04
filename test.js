@@ -1,7 +1,7 @@
 var pug = require('pug')
 var axios = require('axios')
 var fs = require('fs')
-let puggy = pug.compileFile("./Default_new_order_customer.pug")
+let puggy = pug.compileFile("./new_order_supervisor.pug")
 
 let apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2VJRCI6MSwia2V5IjoiMTFlYjRmNjRjZDg1YmQzMDhlYTE5Zjg5Yzg2MTM2YTAiLCJpYXQiOjE2MDk4NTc5OTIsImV4cCI6MTY0MTM5Mzk5Mn0.09s0OIwNDDrJalYCytauSr4Bdo3e8UU6gPWbtgUiKGs'
 
@@ -15,7 +15,7 @@ axios.interceptors.request.use(config => {
 axios('https://grnd4411.okeoke.io/api/v1/order/getOrder', {      
     method: 'post',
     data: {
-        "orderUUID": "11EB540C7C225E6083982DDEE125D01D", 
+        "orderUUID": "11EB661AEEB8BF8082815DE79C78A6FD", 
         "informational": true
     }
 }).then(res => {

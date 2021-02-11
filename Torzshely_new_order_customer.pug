@@ -4,14 +4,12 @@ html
 
 div(style={height: '100%!important', width: '100%!important', background: '#f5f5f5', margin: 0, padding: 0})
     div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
-        h3 Kedves Munkatársunk!
-        p A következő rendelés érkezett:
+        h3 Kedves Vásárlónk!
+        p A rendelése sikeresen megérkezett hozzánk:
         table(style={'border-collapse': 'collapse', width: '100%'})
             tr(style={border: 'none', 'font-size': '12px', 'font-weight': 'bold'})
                 td(style={'text-align': 'center'}) 
                     | Mennyiség
-                td(style={'text-align': 'center'}) 
-                    | Cikkszám
                 td 
                     | Terméknév
                 td(style={'text-align': 'right'}) 
@@ -23,8 +21,6 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                     td(style={'text-align': 'center'}) 
                         = val.count
                     td
-                        = val.extID
-                    td
                         = val.name.hu
                     td(style={'text-align': 'right'}) 
                         = val.sizeName.hu
@@ -32,14 +28,14 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                         = val.discountPrice
                         |  Ft
             tr
-                td(colspan=5 style={'text-align': 'right', 'font-weight': 'bold'}) 
+                td(colspan=4 style={'text-align': 'right', 'font-weight': 'bold'}) 
                     = order.discountPrice
                     |  Ft
         p   Rendelésszám: 
             span(style={'font-weight': 'bold'})
                 = order.orderNumber
         if order.notes
-            p   Megjegyzésed:
+            p   Megjegyzés:
                 br
                 span(style={'font-size': '13px'})
                     = order.notes
@@ -97,9 +93,15 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                     = order.invoiceInfo.city
                     | ,
                     = order.invoiceInfo.street
-                    | 
+                    |  
                     = order.invoiceInfo.streetNumber
-                    |.,
+                    |.,   
                     = order.invoiceInfo.floor
 
-        p További szép napot és jó munkát kívánunk!
+        p Felmerülő kérdés esetén a +36 30 466 54 01-es telefonszámon, illetve az torzshelybyfoltin@gmail.com elérhetőek vagyunk. 
+            br 
+            br 
+            | Köszönjük a vásárlást!
+            br
+            | Üdvözlettel, Törzshely!
+            

@@ -38,8 +38,12 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
         p   Rendelésszám: 
             span(style={'font-weight': 'bold'})
                 = order.orderNumber
+        if order.deliveryType = 'delivery'
+            p   Kézbesítés: Házhozszállítás
+        else
+            p   Kézbesítés: Személyes átvétel
         if order.notes
-            p   Megjegyzésed:
+            p   Megjegyzés:
                 br
                 span(style={'font-size': '13px'})
                     = order.notes

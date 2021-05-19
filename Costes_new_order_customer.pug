@@ -1,0 +1,79 @@
+doctype html
+html
+  head
+
+div(style={height: '100%!important', width: '100%!important', background: '#f5f5f5', margin: 0, padding: 0})
+    div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
+        h3 Kedves Vendégünk!
+        p A következő foglalásaid sikeresen rögzítésre kerültek rendszerünkben:
+        table(style={'border-collapse': 'collapse', width: '100%'})
+            tr(style={border: 'none', 'font-size': '12px', 'font-weight': 'bold'})
+                td(style={'text-align': 'center'}) 
+                    | Mennyiség
+                td 
+                    | Terméknév
+                td(style={'text-align': 'right'}) 
+                    | Foglalási dátum
+                td(style={'text-align': 'right'}) 
+                    | Bruttó Ár
+            each val, key in booking.entities
+                tr(style={'border-top': '1px solid lightgrey'})
+                    td(style={'text-align': 'center'}) 
+                        = val.seats
+                        |  db
+                    td
+                        = val.entityName.hu
+                    td(style={'text-align': 'right'}) 
+                        = booking.bookDate
+                    td(style={'text-align': 'right'}) 
+                        = val.seatPrice
+            tr
+                td(colspan=4 style={'text-align': 'right', 'font-weight': 'bold'}) 
+                    = booking.totalPaid
+                    |  Ft
+       
+        br
+        table(style={'border-collapse': 'collapse', width: '100%'})
+            tr(style={border: 'none', 'font-size': '14px', 'font-weight': 'bold'})
+                td(colspan=2) Számlázási adatok:   
+                
+            tr(style={'border-top': '1px solid lightgrey'}) 
+                td(style={'width': '100px'})
+                    span(style={'font-size': '12px', 'font-weight': 'bold'}) Név: 
+                td
+                    = booking.invoiceInfo.name
+            if booking.invoiceInfo.tax
+                tr(style={'border-top': '1px solid lightgrey'})
+                    td(style={'width': '100px'})
+                        span(style={'font-size': '12px', 'font-weight': 'bold'}) Adószám: 
+                    
+                    td 
+                        = booking.invoiceInfo.tax
+            tr(style={'border-top': '1px solid lightgrey'})
+                td(style={'width': '100px'})
+                    span(style={'font-size': '12px', 'font-weight': 'bold'}) Cím: 
+                td
+                    = booking.invoiceInfo.zip
+                    |  
+                    = booking.invoiceInfo.city
+                    | ,
+                    = booking.invoiceInfo.street
+                    |  
+                    = booking.invoiceInfo.streetNumber
+                    |.,   
+                    = booking.invoiceInfo.floor
+        br
+        p(style={'font-weight': 'bold'}) A foglalásod véglegesítéséhez és a fizetéshez kérlek kattints az alábbi linkre:
+
+        a(href='https://pnrvqvmru.okeoke.io/costesres/bookingview/local?bid=' + booking.uuid) Tovább a foglalásomhoz
+
+        p Figyelem! Az automatikus e-mail értesítőnk után 15 percig van lehetőséged befejezni a tranzakciót és véglegesíteni a foglalási igényedet. Amennyiben az időkorlát lejár, foglalásodat töröljük.
+            br 
+            br
+            | Köszönjük a vásárlást!
+            br
+            | Üdvözlettel!
+
+        div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
+
+        img(src='https://pnrvqvmru.okeoke.io/costesres/assets/img/email.png' height='80px')

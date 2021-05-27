@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "moment": "^2.29.1",
     "orderengine-client": "^0.3.52",
     "pug": "^3.0.0"
   }

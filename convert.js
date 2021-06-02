@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-fs.readFile("./defaults/order_status_ready.pug", 'utf8', function (err, data) {
+fs.readFile("./defaults/order_payment_reminder.pug", 'utf8', function (err, data) {
     if (err) return console.log(err)
     let words = data.replace(/\r?\n|\r/g, "\\n\\r");
     //console.log(words)

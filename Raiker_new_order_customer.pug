@@ -68,7 +68,7 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
             span(style={'font-weight': 'bold'})
 
                 = order.orderNumber
-        if order.deliveryType = 'delivery'
+        if order.deliveryType === 'delivery'
             p   Kézbesítés: Házhozszállítás
         else
             p   Kézbesítés: Személyes átvétel

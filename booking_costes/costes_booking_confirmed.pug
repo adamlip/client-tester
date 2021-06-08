@@ -6,6 +6,12 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
     div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
         h3 Kedves Vendégünk!
         p A következő foglalásaid sikeresen rögzítésre kerültek rendszerünkben:
+        p Fizetési mód: 
+            if booking.paymentAgent === 'local'
+                | Helyben
+            else
+                | Online
+
         table(style={'border-collapse': 'collapse', width: '100%'})
             tr(style={border: 'none', 'font-size': '12px', 'font-weight': 'bold'})
                 td(style={'text-align': 'center'}) 
@@ -47,7 +53,6 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                 tr(style={'border-top': '1px solid lightgrey'})
                     td(style={'width': '100px'})
                         span(style={'font-size': '12px', 'font-weight': 'bold'}) Adószám: 
-                    
                     td 
                         = booking.invoiceInfo.tax
             tr(style={'border-top': '1px solid lightgrey'})
@@ -61,12 +66,13 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                     = booking.invoiceInfo.street
                     |  
                     = booking.invoiceInfo.streetNumber
-                    |.,   
-                    = booking.invoiceInfo.floor
+                    if booking.invoiceInfo.floor !== ''
+                        |.,   
+                        = booking.invoiceInfo.floor
         br
         p(style={'font-weight': 'bold'}) A foglalásod megtekintéséhez kattints az alábbi linkre:
 
-        a(href='https://pnrvqvmru.okeoke.io/costesres/bookingview/local?bid=' + booking.uuid) Tovább a foglalásomhoz
+        a(href='https://book.costesbeachclub.hu/bookingview/local?bid=' + booking.uuid) Tovább a foglalásomhoz
 
         br 
         br
@@ -76,4 +82,4 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
 
         div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
 
-        img(src='https://pnrvqvmru.okeoke.io/costesres/assets/img/email.png' height='80px')
+        img(src='https://book.costesbeachclub.hu/assets/img/email.png' height='80px')

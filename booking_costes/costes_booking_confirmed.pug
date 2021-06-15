@@ -28,7 +28,7 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                         = val.seats
                         |  db
                     td
-                        = val.entityName.hu
+                        = val.name.hu
                     td(style={'text-align': 'right'}) 
                         = moment(booking.bookDate).format('YYYY-MM-DD HH:mm')
                     td(style={'text-align': 'right'}) 
@@ -36,7 +36,7 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                         |  Ft
             tr
                 td(colspan=4 style={'text-align': 'right', 'font-weight': 'bold'}) 
-                    = parseInt(booking.totalPaid)
+                    = parseInt(booking.totalPrice)
                     |  Ft
        
         br

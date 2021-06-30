@@ -35,7 +35,7 @@ axios.interceptors.request.use(config => {
 //     })
 // })
 
-axios.get('https://booking.okeoke.io/api/v1/booking/uuid/11ebc5367caa3f10b6562310ff57a05a', { }).then(res => {
+axios.get('https://bookingdev.okeoke.io/api/v1/booking/uuid/11EBD991B5815750AF74DBE06699AC1A', { }).then(res => {
     console.log(res.data.data)
     let moment = require('moment')
     let data = puggy({booking: res.data.data, moment})

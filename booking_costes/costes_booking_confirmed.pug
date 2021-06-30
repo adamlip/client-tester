@@ -21,7 +21,9 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                 td(style={'text-align': 'right'}) 
                     | Foglalási dátum
                 td(style={'text-align': 'right'}) 
-                    | Bruttó Ár
+                    | Bruttó ár / db
+                td(style={'text-align': 'right'}) 
+                    | Bruttó ár / összesen
             each val, key in booking.entities
                 tr(style={'border-top': '1px solid lightgrey'})
                     td(style={'text-align': 'center'}) 
@@ -34,8 +36,11 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                     td(style={'text-align': 'right'}) 
                         = parseInt(val.seatPrice)
                         |  Ft
+                    td(style={'text-align': 'right'}) 
+                        = parseInt(val.seatPrice*val.seats)
+                        |  Ft
             tr
-                td(colspan=4 style={'text-align': 'right', 'font-weight': 'bold'}) 
+                td(colspan=5 style={'text-align': 'right', 'font-weight': 'bold'}) 
                     = parseInt(booking.totalPrice)
                     |  Ft
        

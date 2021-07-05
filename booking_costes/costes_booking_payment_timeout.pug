@@ -41,7 +41,7 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                     td(style={'text-align': 'right'}) 
                         = moment(booking.bookDate).format('YYYY-MM-DD HH:mm')
                     td(style={'text-align': 'right'}) 
-                        = val.seatPrice
+                        = parseInt(val.seatPrice)
                         |  Ft
                     td(style={'text-align': 'right'}) 
                         = parseInt(val.seatPrice*val.seats)

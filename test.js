@@ -1,7 +1,7 @@
 var pug = require('pug')
 var axios = require('axios')
 var fs = require('fs')
-let puggy = pug.compileFile("./booking_costes/costes_booking_confirmed.pug")
+let puggy = pug.compileFile("./booking_costes/costes_booking_payment_reminder.pug")
 
 //let apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2VVVUlEIjoiIiwicGxheWVySUQiOm51bGwsInVzZXJVVUlEIjoiMTFFQjkwODM2MDRENUI1MEJCQTVDMTFDOEVBMTVBOUYiLCJ0b2tlblR5cGUiOiJ1c2VyIiwidG9rZW5VVUlEIjoiMTFlYmFmOGJiNGI0YjlmMDhjNjQ4MTA3MDEyYzMyNmMiLCJpYXQiOjE2MjA0MzAwMTMsImV4cCI6MTYyMzAyMjAxM30.ihlVh9SRb6Vvc4pQx70HvZhHW6XrsbCrXE7uMDGqfpo'
 let apiToken = ''

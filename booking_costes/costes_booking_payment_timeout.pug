@@ -4,7 +4,7 @@ html
 
 div(style={height: '100%!important', width: '100%!important', background: '#f5f5f5', margin: 0, padding: 0})
     div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
-        h3 Kedves Vásárlónk!
+        h3 Kedves Vendégünk, Dear Customer! 
         p A(z) 
             = booking.id 
             |  számú rendelésed időtúllépés miatt törlésre került rendszerünkből.
@@ -85,6 +85,87 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
         br 
         br
         | Üdvözlettel!
+        br
+        p Your order #
+            = booking.id 
+            |  has been cancelled due to timeout.
+        P If you want to place an order, the booking process should be repeated again by placing a new order.
+        p The details for your #
+            = booking.id
+            |  booking were:
+
+        p Payment method: 
+            if booking.paymentAgent === 'local'
+                | Local
+            else
+                | Online
+        p 
+        table(style={'border-collapse': 'collapse', width: '100%'})
+            tr(style={border: 'none', 'font-size': '12px', 'font-weight': 'bold'})
+                td(style={'text-align': 'center'}) 
+                    | Quantity
+                td 
+                    | Product
+                td(style={'text-align': 'right'}) 
+                    | Booking date
+                td(style={'text-align': 'right'}) 
+                    | Price / pcs
+                td(style={'text-align': 'right'}) 
+                    | Price / sum
+            each val, key in booking.entities
+                tr(style={'border-top': '1px solid lightgrey'})
+                    td(style={'text-align': 'center'}) 
+                        = val.seats
+                        |  pcs
+                    td
+                        = val.entityName.hu
+                    td(style={'text-align': 'right'}) 
+                        = moment(booking.bookDate).format('YYYY-MM-DD HH:mm')
+                    td(style={'text-align': 'right'}) 
+                        = parseInt(val.seatPrice)
+                        |  Huf
+                    td(style={'text-align': 'right'}) 
+                        = parseInt(val.seatPrice*val.seats)
+                        |  Huf
+            tr
+                td(colspan=5 style={'text-align': 'right', 'font-weight': 'bold'}) 
+                    = parseInt(booking.totalPrice)
+                    |  Huf
+       
+        br
+        table(style={'border-collapse': 'collapse', width: '100%'})
+            tr(style={border: 'none', 'font-size': '14px', 'font-weight': 'bold'})
+                td(colspan=2) Invoice data:   
+                
+            tr(style={'border-top': '1px solid lightgrey'}) 
+                td(style={'width': '100px'})
+                    span(style={'font-size': '12px', 'font-weight': 'bold'}) Name: 
+                td
+                    = booking.invoiceInfo.name
+            if booking.invoiceInfo.tax
+                tr(style={'border-top': '1px solid lightgrey'})
+                    td(style={'width': '100px'})
+                        span(style={'font-size': '12px', 'font-weight': 'bold'}) Vat number: 
+                    td 
+                        = booking.invoiceInfo.tax
+            tr(style={'border-top': '1px solid lightgrey'})
+                td(style={'width': '100px'})
+                    span(style={'font-size': '12px', 'font-weight': 'bold'}) Address: 
+                td
+                    = booking.invoiceInfo.zip
+                    |  
+                    = booking.invoiceInfo.city
+                    | ,
+                    = booking.invoiceInfo.street
+                    |  
+                    = booking.invoiceInfo.streetNumber
+                    if booking.invoiceInfo.floor !== ''
+                        |.,   
+                        = booking.invoiceInfo.floor
+        br
+        br 
+        br
+        | Regards!
 
         div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
 

@@ -4,7 +4,8 @@ html
 
 div(style={height: '100%!important', width: '100%!important', background: '#f5f5f5', margin: 0, padding: 0})
     div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
-        h3 Kedves Vendégünk!
+        h3 Kedves Vendégünk, Dear Customer! 
+        p Please scroll down for the English version.
         p A következő foglalásaid sikeresen rögzítésre kerültek rendszerünkben:
         p Fizetési mód: 
             if booking.paymentAgent === 'local'
@@ -45,6 +46,7 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                     |  Ft
        
         br
+        p Kedves Vendégünk! A sikeresen leadott és kifizetett foglalás lemondásának legkésőbbi időpontja a foglalási dátumot megelőző nap, éjfél. Lemondási igényét az info@costesbeachclub.hu e-mail címen jelezheti kollégáinknak. A visszautalás átfutási ideje és az összeg jóváírása 2-3 munkanapot vesz igénybe.
         table(style={'border-collapse': 'collapse', width: '100%'})
             tr(style={border: 'none', 'font-size': '14px', 'font-weight': 'bold'})
                 td(colspan=2) Számlázási adatok:   
@@ -84,6 +86,88 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
         | Köszönjük a vásárlást!
         br
         | Üdvözlettel!
+
+        h3 Dear Customer!
+        p The following booking has been successfully recorded in our system:
+        p Payment method: 
+            if booking.paymentAgent === 'local'
+                | Local
+            else
+                | Online
+
+        table(style={'border-collapse': 'collapse', width: '100%'})
+            tr(style={border: 'none', 'font-size': '12px', 'font-weight': 'bold'})
+                td(style={'text-align': 'center'}) 
+                    | Quantity
+                td 
+                    | Product
+                td(style={'text-align': 'right'}) 
+                    | Booking date
+                td(style={'text-align': 'right'}) 
+                    | Price / pc
+                td(style={'text-align': 'right'}) 
+                    | Price / sum
+            each val, key in booking.entities
+                tr(style={'border-top': '1px solid lightgrey'})
+                    td(style={'text-align': 'center'}) 
+                        = val.seats
+                        |  pc
+                    td
+                        = val.name.hu
+                    td(style={'text-align': 'right'}) 
+                        = moment(booking.bookDate).format('YYYY-MM-DD HH:mm')
+                    td(style={'text-align': 'right'}) 
+                        = parseInt(val.seatPrice)
+                        |  Huf
+                    td(style={'text-align': 'right'}) 
+                        = parseInt(val.seatPrice*val.seats)
+                        |  Huf
+            tr
+                td(colspan=5 style={'text-align': 'right', 'font-weight': 'bold'}) 
+                    = parseInt(booking.totalPrice)
+                    |  Huf
+       
+        br
+        p Dear Guest! The latest cancellation date for a successfully submitted and paid booking is midnight the day before the booking date. You can indicate your cancellation request to our colleagues at the e-mail address info@costesbeachclub.hu. Refund lead time and amount approval will take 2-3 business days.
+        table(style={'border-collapse': 'collapse', width: '100%'})
+            tr(style={border: 'none', 'font-size': '14px', 'font-weight': 'bold'})
+                td(colspan=2) Invoice data:   
+                
+            tr(style={'border-top': '1px solid lightgrey'}) 
+                td(style={'width': '100px'})
+                    span(style={'font-size': '12px', 'font-weight': 'bold'}) Name: 
+                td
+                    = booking.invoiceInfo.name
+            if booking.invoiceInfo.tax
+                tr(style={'border-top': '1px solid lightgrey'})
+                    td(style={'width': '100px'})
+                        span(style={'font-size': '12px', 'font-weight': 'bold'}) Vat number: 
+                    td 
+                        = booking.invoiceInfo.tax
+            tr(style={'border-top': '1px solid lightgrey'})
+                td(style={'width': '100px'})
+                    span(style={'font-size': '12px', 'font-weight': 'bold'}) Address: 
+                td
+                    = booking.invoiceInfo.zip
+                    |  
+                    = booking.invoiceInfo.city
+                    | ,
+                    = booking.invoiceInfo.street
+                    |  
+                    = booking.invoiceInfo.streetNumber
+                    if booking.invoiceInfo.floor !== ''
+                        |.,   
+                        = booking.invoiceInfo.floor
+        br
+        p(style={'font-weight': 'bold'}) To view your reservation, please click on the link below:
+
+        a(href='https://book.costesbeachclub.hu/bookingview/local?bid=' + booking.uuid) Go to my reservation
+
+        br 
+        br
+        | Thank you for your purchase!
+        br
+        | Regards!
 
         div(style={width: '600px', margin: 'auto', background: '#fff', padding: '12px'})
 

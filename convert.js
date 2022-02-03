@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-fs.readFile("./app_defaults/order_status_submitted_supervisor.pug", 'utf8', function (err, data) {
+fs.readFile("./app_agora/order_status_submitted.pug", 'utf8', function (err, data) {
     if (err) return console.log(err)
     let words = data.replace(/\r?\n|\r/g, "\\n\\r");
     //console.log(words)

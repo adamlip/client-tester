@@ -1,0 +1,25 @@
+table(style={'border-collapse': 'collapse', width: '100%'})
+    tr(style={border: 'none', 'font-size': '12px', 'font-weight': 'bold'})
+        td(style={'text-align': 'center'}) 
+            | Mennyiség
+        td 
+            | Terméknév
+        td(style={'text-align': 'right'}) 
+            | Kiszerelés
+        td(style={'text-align': 'right'}) 
+            | Bruttó Ár
+    each val, key in order.items
+        tr(style={'border-top': '1px solid lightgrey'})
+            td(style={'text-align': 'center'}) 
+                = val.count
+            td
+                = val.name.hu
+            td(style={'text-align': 'right'}) 
+                = val.sizeName.hu
+            td(style={'text-align': 'right'}) 
+                = val.discountPrice
+                |  Ft
+    tr
+        td(colspan=4 style={'text-align': 'right', 'font-weight': 'bold'}) 
+            = order.discountPrice
+            |  Ft

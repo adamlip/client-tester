@@ -1,7 +1,7 @@
 var pug = require('pug')
 var axios = require('axios')
 var fs = require('fs')
-let puggy = pug.compileFile("./booking_costes/costes_booking_confirmed.pug")
+let puggy = pug.compileFile("./booking_costes/costes_booking_payment_reminder.pug")
 
 //let apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2VVVUlEIjoiIiwicGxheWVySUQiOm51bGwsInVzZXJVVUlEIjoiMTFFQjkwODM2MDRENUI1MEJCQTVDMTFDOEVBMTVBOUYiLCJ0b2tlblR5cGUiOiJ1c2VyIiwidG9rZW5VVUlEIjoiMTFlYmFmOGJiNGI0YjlmMDhjNjQ4MTA3MDEyYzMyNmMiLCJpYXQiOjE2MjA0MzAwMTMsImV4cCI6MTYyMzAyMjAxM30.ihlVh9SRb6Vvc4pQx70HvZhHW6XrsbCrXE7uMDGqfpo'
 let apiToken = ''
@@ -35,7 +35,7 @@ axios.interceptors.request.use(config => {
 //     })
 // })
 
-axios.get('https://booking.okeoke.io/api/v1/booking/uuid/11ebc5367caa3f10b6562310ff57a05a', { }).then(res => {
+axios.get('https://bookingdev.okeoke.io/api/v1/booking/uuid/11EBD991B5815750AF74DBE06699AC1A', { }).then(res => {
     console.log(res.data.data)
     let moment = require('moment')
     let data = puggy({booking: res.data.data, moment})

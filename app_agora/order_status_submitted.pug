@@ -34,54 +34,6 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
         p   Rendelésszám: 
             span(style={'font-weight': 'bold'})
                 = order.orderNumber
-        if order.paymentType === 'Online'
-            p   Fizetési mód: SimplePay
-        else
-            p   Fizetési mód: Utánvét
-        if order.deliveryType === 'delivery'
-            p   Kézbesítés: Házhozszállítás
-        else
-            p   Kézbesítés: Személyes átvétel
-        if order.requestedReadyTime
-            p   Kért időpont: 
-                = order.requestedReadyTime
-        else
-            p   Kért időpont: Minél hamarabb
-        if order.notes
-            p   Megjegyzés:
-                br
-                span(style={'font-size': '13px'})
-                    = order.notes
-        p
-        if order.deliveryInfo
-            table(style={'border-collapse': 'collapse', width: '100%'})
-                tr(style={border: 'none', 'font-size': '14px', 'font-weight': 'bold'})
-                    td(colspan=2) Szállítási adatok:
-                    
-                tr(style={'border-top': '1px solid lightgrey'})
-                    td(style={'width': '100px'})
-                        span(style={'font-size': '12px', 'font-weight': 'bold'}) Név: 
-                    td
-                        = order.deliveryInfo.name
-                tr(style={'border-top': '1px solid lightgrey'})
-                    td(style={'width': '100px'})
-                        span(style={'font-size': '12px', 'font-weight': 'bold'}) Telefonszám: 
-                    
-                    td 
-                        = order.deliveryInfo.telNumber
-                tr(style={'border-top': '1px solid lightgrey'})
-                    td(style={'width': '100px'})
-                        span(style={'font-size': '12px', 'font-weight': 'bold'}) Cím: 
-                    td
-                        = order.deliveryInfo.zip
-                        |  
-                        = order.deliveryInfo.city
-                        | , 
-                        = order.deliveryInfo.street
-                        |  
-                        = order.deliveryInfo.streetNumber
-                        |., 
-                        = order.deliveryInfo.floor
         br
         if order.invoiceInfo
             table(style={'border-collapse': 'collapse', width: '100%'})
@@ -115,25 +67,6 @@ div(style={height: '100%!important', width: '100%!important', background: '#f5f5
                         = order.invoiceInfo.floor
 
         if location
-            if location.address
-                p   
-                | Személyes átvétel esetén az alábbi címen várunk téged! 
-                br
-                br  
-                = location.address.zip
-                | 
-                = location.address.city
-                | , 
-                = location.address.street
-                |  
-                = location.address.streetNumber
-                |.
-                br
-                if location.address.telNumber
-                    br  
-                    | Telefon: 
-                    = location.address.telNumber
-                br
             if location.openHours
                 if location.openHours.location
                     br
